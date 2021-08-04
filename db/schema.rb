@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_023249) do
-
+ActiveRecord::Schema.define(version: 2021_08_03_095946) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,10 +35,8 @@ ActiveRecord::Schema.define(version: 2021_08_03_023249) do
     t.boolean "admin", default: false
     t.string "firstname"
     t.string "lastname"
-    t.index "\"unlock_token\"", name: "index_users_on_unlock_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
